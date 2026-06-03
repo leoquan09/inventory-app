@@ -7,4 +7,19 @@ async function getInventory() {
     return rows;
 }
 
-module.exports = { getInventory };
+async function editInventory(name, type) {
+    const query = `
+    INSERT INTO games (name, type)
+    VALUES ($1, $2)
+    RETURNING *;
+    `;
+
+    const values = [name, type];
+
+    await pool.query(query, values);
+}
+
+module.exports = { 
+    getInventory,
+    editInventory
+ };

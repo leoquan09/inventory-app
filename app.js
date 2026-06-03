@@ -6,6 +6,8 @@ const path = require('path');
 const { homeRouter } = require('./routes/homeRouter.js');
 const { newRouter } = require('./routes/newRouter.js');
 
+app.use(express.urlencoded({ extended: true }));
+
 app.set('view engine', 'ejs');
 app.set ('views', path.join(__dirname, 'views'));
 
